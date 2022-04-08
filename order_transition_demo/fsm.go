@@ -4,20 +4,21 @@ import (
 	"fmt"
 )
 
-type StatusCore struct {
-	OrderStatus      int
-	OrderAuditStatus int
+type StatusGroup struct {
+	OrderStatus        int16
+	OrderAuditStatus   int16
+	OrderPaymentStatus int16
 }
 
 type Transition struct {
-	From   StatusCore
+	From   StatusGroup
 	Event  string
-	To     StatusCore
+	To     StatusGroup
 	Action string
 }
 
 type Delegate interface {
-	HandleEvent(action string, fromState StatusCore, toState StatusCore, args []interface{}) error
+	HandleEvent(action string, fromState StatusGroup, toState StatusGroup, args []interface{}) error
 }
 
 type StateMachine struct {
@@ -33,7 +34,7 @@ type Error interface {
 
 type smError struct {
 	badEvent     string
-	currentState StatusCore
+	currentState StatusGroup
 }
 
 func (e smError) Error() string {
@@ -44,7 +45,7 @@ func (e smError) BadEvent() string {
 	return e.badEvent
 }
 
-func (e smError) CurrentState() StatusCore {
+func (e smError) CurrentState() StatusGroup {
 	return e.currentState
 }
 
@@ -52,7 +53,7 @@ func NewStateMachine(delegate Delegate, transitions ...Transition) *StateMachine
 	return &StateMachine{delegate: delegate, transitions: transitions}
 }
 
-func (m *StateMachine) Trigger(currentState StatusCore, event string, args ...interface{}) error {
+func (m *StateMachine) Trigger(currentState StatusGroup, event string, args ...interface{}) error {
 	currentTransition := m.findTransMatching(currentState, event)
 	if currentTransition == nil {
 		return smError{event, currentState}
@@ -65,7 +66,7 @@ func (m *StateMachine) Trigger(currentState StatusCore, event string, args ...in
 	return err
 }
 
-func (m *StateMachine) findTransMatching(fromState StatusCore, event string) *Transition {
+func (m *StateMachine) findTransMatching(fromState StatusGroup, event string) *Transition {
 	for _, v := range m.transitions {
 		if v.From == fromState && v.Event == event {
 			return &v

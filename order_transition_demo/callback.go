@@ -4,7 +4,7 @@ type DefaultDelegate struct {
 	P EventProcessor
 }
 
-func (d *DefaultDelegate) HandleEvent(action string, fromState StatusCore, toState StatusCore, args []interface{}) error {
+func (d *DefaultDelegate) HandleEvent(action string, fromState StatusGroup, toState StatusGroup, args []interface{}) error {
 	if fromState != toState {
 		d.P.OnExit(fromState, args)
 	}
