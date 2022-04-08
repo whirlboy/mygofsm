@@ -1,4 +1,4 @@
-package transition_demo
+package order_transition_demo
 
 import (
 	"fmt"
