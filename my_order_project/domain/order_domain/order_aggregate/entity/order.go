@@ -15,3 +15,10 @@ type Order struct {
 	PayMode     int64
 	TaskIds     []int64
 }
+
+type OrderPayment struct {
+	OrderPaymentId int64
+	OrderId        int64
+	PaymentStatus  int64
+	PaymentAmount  int64
+}

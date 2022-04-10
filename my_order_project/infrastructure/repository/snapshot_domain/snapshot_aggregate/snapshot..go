@@ -1,8 +1,8 @@
 package snapshot_aggregate
 
 import (
-	"code.waizixi.com/go-order-system/domain/snapshot_domain/snapshot_aggregate/entity"
 	"context"
+	"mygofsm/my_order_project/domain/snapshot_domain/snapshot_aggregate/entity"
 )
 
 /**
