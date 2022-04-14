@@ -39,3 +39,8 @@ func (impl *OrderServiceFacadeImpl) CoreCreateOrder(ctx context.Context, req *sn
 
 	return nil, nil
 }
+
+func (impl *OrderServiceFacadeImpl) AfterCreateOrder(ctx context.Context, req *snapshot.AfterCreateOrderReq) (*snapshot.AfterCreateOrderResp, error) {
+
+	return nil, nil
+}
