@@ -30,7 +30,18 @@ struct CoreCreateOrderResp {
     1: BaseResp resp;
 }
 
+struct AfterCreateOrderReq {
+    1: BaseReq Base;
+    2: i64 tokenReq;
+
+}
+
+struct AfterCreateOrderResp {
+    1: BaseResp resp;
+}
+
 service OrderServiceFacade {
     PreCreateOrderResp PreCreateOrder(1: PreCreateOrderReq req);
     CoreCreateOrderResp CoreCreateOrder(1: CoreCreateOrderReq req);
+    AfterCreateOrderResp AfterCreateOrder(1: AfterCreateOrderReq req)
 }
