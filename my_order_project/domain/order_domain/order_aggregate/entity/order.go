@@ -1,6 +1,9 @@
 package entity
 
-import "context"
+import (
+	"context"
+	"time"
+)
 
 /**
  * @Author waizixi
@@ -25,6 +28,13 @@ type OrderPayment struct {
 	PaymentStatus  int64
 	PaymentAmount  int64
 	ExtraInfo      map[interface{}]interface{}
+}
+
+type OrderBrief struct {
+	OrderId     int64
+	OrderTime   time.Time
+	ConId       int64
+	OrderDetail string
 }
 
 func (orderEntity *Order) GetOrderTaskIds(ctx *context.Context, orderId int64) ([]int64, error) {

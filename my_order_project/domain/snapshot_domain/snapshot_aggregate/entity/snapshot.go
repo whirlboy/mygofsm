@@ -16,7 +16,7 @@ type TaskDtoSubmitSnapshot struct {
 	Id            int64
 	UserId        int64
 	SubmitType    int64
-	SubmitCommand int64
+	SubmitCommand string
 	ReqToken      string
 	ExtraInfo     map[interface{}]interface{}
 }

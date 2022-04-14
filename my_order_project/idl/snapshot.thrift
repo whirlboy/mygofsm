@@ -9,5 +9,5 @@ struct PreSubmitOrdersResp {
 }
 
 service OrderService {
-    PreSubmitOrdersResp echo(1: PreSubmitOrdersReq req);
+    PreSubmitOrdersResp PreSubmitOrders(1: PreSubmitOrdersReq req);
 }

@@ -2,9 +2,9 @@ package snapshot
 
 import (
 	"context"
-	"go-order-system/application/service/snapshot_service"
-	"go-order-system/domain/snapshot_domain/snapshot_aggregate/repository"
-	"go-order-system/idl/gen-go/snapshot"
+	"mygofsm/my_order_project/application/service/snapshot_service"
+	"mygofsm/my_order_project/domain/snapshot_domain/snapshot_aggregate/repository"
+	"mygofsm/my_order_project/idl/gen-go/snapshot"
 )
 
 /**
