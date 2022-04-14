@@ -12,7 +12,10 @@ import (
  * @Description //TODO $
  **/
 
-func PreSubmitOrders(ctx context.Context, req snapshot.PreSubmitOrdersReq) (*snapshot.PreSubmitOrdersResp, error) {
+type OrderServiceFacadeImpl struct {
+}
+
+func (impl *OrderServiceFacadeImpl) PreCreateOrder(ctx context.Context, req *snapshot.PreCreateOrderReq) (*snapshot.PreCreateOrderResp, error) {
 	// 生成快照实体
 	snapshotEntity, err := snapshot_service.GenerateSnapshotEntity(ctx, req)
 	if err != nil {
@@ -29,5 +32,10 @@ func PreSubmitOrders(ctx context.Context, req snapshot.PreSubmitOrdersReq) (*sna
 		return nil, err
 	}
 	err = snapshot_service.CheckSnapshotTask(ctx, snapshotEntity)
+	return nil, nil
+}
+
+func (impl *OrderServiceFacadeImpl) CoreCreateOrder(ctx context.Context, req *snapshot.CoreCreateOrderReq) (*snapshot.CoreCreateOrderResp, error) {
+
 	return nil, nil
 }

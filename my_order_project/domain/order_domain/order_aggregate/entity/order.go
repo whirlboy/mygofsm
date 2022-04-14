@@ -34,6 +34,7 @@ type OrderBrief struct {
 	OrderTime   string
 	ConId       int64
 	OrderDetail string
+	ExtraInfo   map[interface{}]interface{}
 }
 
 func (orderEntity *Order) GetOrderTaskIds(ctx *context.Context, orderId int64) ([]int64, error) {
