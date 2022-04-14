@@ -13,8 +13,10 @@ import (
 
 type ApplicationService interface {
 	GenerateSnapshotEntity(ctx context.Context, req snapshot.PreCreateOrderReq) (*entity.TaskDtoSubmitSnapshot, error)
-	CheckSnapshotTask(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error
-	CreateTask(ctx *context.Context, snapshotId int64) error
+	CreateSnapshot(ctx *context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error
+	PreCreateTask(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error
+	CoreCreateTask(ctx *context.Context, snapshotId int64) error
+	AfterCreateTask(ctx *context.Context, snapshotId int64) error
 }
 
 type ApplicationServiceImpl struct {
@@ -35,6 +37,11 @@ func (impl *ApplicationServiceImpl) GenerateSnapshotEntity(ctx context.Context, 
 	return snapshotEntity, nil
 }
 
+func (impl *ApplicationServiceImpl) CreateSnapshot(ctx *context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
+
+	return nil
+}
+
 //
 //// 创建快照
 //func (impl *ApplicationServiceImpl) CreateSnapshot(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
@@ -51,10 +58,14 @@ func (impl *ApplicationServiceImpl) GenerateSnapshotEntity(ctx context.Context, 
 //}
 
 // 定义调用任务支持子域进行校验
-func (impl *ApplicationServiceImpl) CheckSnapshotTask(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
+func (impl *ApplicationServiceImpl) PreCreateTask(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
 	return nil
 }
 
-func (impl *ApplicationServiceImpl) CreateTask(ctx *context.Context, snapshotId int64) error {
+func (impl *ApplicationServiceImpl) CoreCreateTask(ctx *context.Context, snapshotId int64) error {
+	return nil
+}
+
+func (impl *ApplicationServiceImpl) AfterCreateTask(ctx *context.Context, snapshotId int64) error {
 	return nil
 }
