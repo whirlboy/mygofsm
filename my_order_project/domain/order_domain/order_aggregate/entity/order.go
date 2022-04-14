@@ -1,5 +1,7 @@
 package entity
 
+import "context"
+
 /**
  * @Author waizixi
  * @Description //TODO $
@@ -14,6 +16,7 @@ type Order struct {
 	SkuIds      []int64
 	PayMode     int64
 	TaskIds     []int64
+	ExtraInfo   map[interface{}]interface{}
 }
 
 type OrderPayment struct {
@@ -21,4 +24,9 @@ type OrderPayment struct {
 	OrderId        int64
 	PaymentStatus  int64
 	PaymentAmount  int64
+	ExtraInfo      map[interface{}]interface{}
+}
+
+func (orderEntity *Order) GetOrderTaskIds(ctx *context.Context, orderId int64) ([]int64, error) {
+	return nil, nil
 }

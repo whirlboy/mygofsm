@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	"go-order-system/domain/snapshot_domain/snapshot_aggregate/entity"
+	"mygofsm/my_order_project/domain/snapshot_domain/snapshot_aggregate/entity"
 )
 
 /**

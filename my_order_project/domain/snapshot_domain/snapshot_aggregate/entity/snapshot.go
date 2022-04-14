@@ -18,6 +18,7 @@ type TaskDtoSubmitSnapshot struct {
 	SubmitType    int64
 	SubmitCommand int64
 	ReqToken      string
+	ExtraInfo     map[interface{}]interface{}
 }
 
 func (snapshotEntity *TaskDtoSubmitSnapshot) GenerateSnapshotToken() error {
