@@ -2,7 +2,6 @@ package entity
 
 import (
 	"context"
-	"time"
 )
 
 /**
@@ -32,7 +31,7 @@ type OrderPayment struct {
 
 type OrderBrief struct {
 	OrderId     int64
-	OrderTime   time.Time
+	OrderTime   string
 	ConId       int64
 	OrderDetail string
 }
