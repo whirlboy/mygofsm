@@ -11,10 +11,12 @@ import (
  * @Description //TODO $
  **/
 
+var ApplicationSer ApplicationService
+
 type ApplicationService interface {
-	GenerateSnapshotEntity(ctx context.Context, req snapshot.PreCreateOrderReq) (*entity.TaskDtoSubmitSnapshot, error)
+	GenerateSnapshotEntity(ctx *context.Context, req *snapshot.PreCreateOrderReq) (*entity.TaskDtoSubmitSnapshot, error)
 	CreateSnapshot(ctx *context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error
-	PreCreateTask(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error
+	PreCreateTask(ctx *context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error
 	CoreCreateTask(ctx *context.Context, snapshotId int64) error
 	AfterCreateTask(ctx *context.Context, snapshotId int64) error
 }
@@ -22,7 +24,7 @@ type ApplicationService interface {
 type ApplicationServiceImpl struct {
 }
 
-func (impl *ApplicationServiceImpl) GenerateSnapshotEntity(ctx context.Context, req snapshot.PreCreateOrderReq) (*entity.TaskDtoSubmitSnapshot, error) {
+func (impl *ApplicationServiceImpl) GenerateSnapshotEntity(ctx *context.Context, req *snapshot.PreCreateOrderReq) (*entity.TaskDtoSubmitSnapshot, error) {
 	snapshotEntity := &entity.TaskDtoSubmitSnapshot{
 		Id:            0,
 		UserId:        0,
@@ -44,7 +46,7 @@ func (impl *ApplicationServiceImpl) CreateSnapshot(ctx *context.Context, snapsho
 
 //
 //// 创建快照
-//func (impl *ApplicationServiceImpl) CreateSnapshot(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
+//func (impl *ApplicationServiceImpl) CreateSnapshot(ctx *context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
 //	isLocked, err := repository.SnapshotRepo.CheckSnapshotTokenProcessing(ctx, snapshotEntity.ReqToken)
 //	if isLocked {
 //		return fmt.Errorf("snapshotToken processing!")
@@ -58,7 +60,7 @@ func (impl *ApplicationServiceImpl) CreateSnapshot(ctx *context.Context, snapsho
 //}
 
 // 定义调用任务支持子域进行校验
-func (impl *ApplicationServiceImpl) PreCreateTask(ctx context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
+func (impl *ApplicationServiceImpl) PreCreateTask(ctx *context.Context, snapshotEntity *entity.TaskDtoSubmitSnapshot) error {
 	return nil
 }
 

@@ -11,13 +11,14 @@ import (
  * @Author waizixi
  * @Description //TODO $
  **/
+var OrderServiceFacade OrderServiceFacadeImpl
 
 type OrderServiceFacadeImpl struct {
 }
 
-func (impl *OrderServiceFacadeImpl) PreCreateOrder(ctx context.Context, req *snapshot.PreCreateOrderReq) (*snapshot.PreCreateOrderResp, error) {
+func (impl *OrderServiceFacadeImpl) PreCreateOrder(ctx *context.Context, req *snapshot.PreCreateOrderReq) (*snapshot.PreCreateOrderResp, error) {
 	// 生成快照实体
-	snapshotEntity, err := snapshot_service.GenerateSnapshotEntity(ctx, req)
+	snapshotEntity, err := snapshot_service.ApplicationSer.GenerateSnapshotEntity(ctx, req)
 	if err != nil {
 		return nil, err
 	}
@@ -27,11 +28,10 @@ func (impl *OrderServiceFacadeImpl) PreCreateOrder(ctx context.Context, req *sna
 			repository.SnapshotRepo.DeleteSnapshotToken(ctx, snapshotEntity.ReqToken)
 		}
 	}()
-	err = snapshot_service.CreateSnapshot(ctx, snapshotEntity)
+	err = snapshot_service.ApplicationSer.CreateSnapshot(ctx, snapshotEntity)
 	if err != nil {
 		return nil, err
 	}
-	err = snapshot_service.CheckSnapshotTask(ctx, snapshotEntity)
 	return nil, nil
 }
 

@@ -7,6 +7,6 @@ import "context"
  * @Description //TODO $
  **/
 
-func CreateTask(ctx *context.Context, snapshotId int64) {
+func PreCreateTask(ctx *context.Context, PreCreateTask int64) {
 
 }

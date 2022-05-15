@@ -11,13 +11,13 @@ func TestFSM(t *testing.T) {
 	rand.Seed(time.Now().UnixNano())
 
 	statusFlow := &StatusFlow{
-		ID:                 88888888,
-		StatusGroup:        s1,
-		HistoryStatusGroup: []StatusGroup{s1},
+		ID:                 8888,
+		StatusGroup:        StatusGroupA,
+		HistoryStatusGroup: []StatusGroup{StatusGroupC},
 	}
 	fmt.Printf("老状态:%v\n", statusFlow)
 	fsm := initFSM()
-	err := fsm.Trigger(statusFlow.StatusGroup, "demander_approve_script", statusFlow)
+	err := fsm.Trigger(statusFlow.StatusGroup, "事件A", statusFlow)
 	if err != nil {
 		t.Errorf("trigger err: %v", err)
 	}

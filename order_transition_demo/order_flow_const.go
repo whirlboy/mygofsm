@@ -1,18 +1,21 @@
 package order_transition_demo
 
 var (
-	s1 = StatusGroup{
-		OrderStatus:      1,
-		OrderAuditStatus: 1,
+	StatusGroupA = StatusGroup{
+		OrderStatus:        1,
+		OrderAuditStatus:   1,
+		OrderPaymentStatus: 1,
 	}
 
-	s2 = StatusGroup{
-		OrderStatus:      2,
-		OrderAuditStatus: 2,
+	StatusGroupB = StatusGroup{
+		OrderStatus:        2,
+		OrderAuditStatus:   2,
+		OrderPaymentStatus: 2,
 	}
 
-	s3 = StatusGroup{
-		OrderStatus:      3,
-		OrderAuditStatus: 3,
+	StatusGroupC = StatusGroup{
+		OrderStatus:        3,
+		OrderAuditStatus:   3,
+		OrderPaymentStatus: 3,
 	}
 )

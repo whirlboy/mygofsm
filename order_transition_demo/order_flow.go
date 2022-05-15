@@ -35,7 +35,7 @@ func (p *StatusFlowEventProcessor) Action(action string, fromState StatusGroup, 
 
 	switch action {
 	case "demander_approve_script":
-		fmt.Printf("正在执行%v动作\n", action)
+		fmt.Printf("正在执行%v事件\n", action)
 	default: //其它action
 	}
 
