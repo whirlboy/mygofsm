@@ -1,11 +1,5 @@
 package entity
 
-import (
-	"crypto/md5"
-	"encoding/hex"
-	"encoding/json"
-)
-
 /**
  * @Author waizixi
  * @Description //TODO $
@@ -21,13 +15,13 @@ type TaskDtoSubmitSnapshot struct {
 	ExtraInfo     map[interface{}]interface{}
 }
 
-func (snapshotEntity *TaskDtoSubmitSnapshot) GenerateSnapshotToken() error {
-	a, err := json.Marshal(snapshotEntity.SubmitCommand)
-	if err != nil {
-		return err
-	}
-	md5Hash := md5.New()
-	md5Hash.Write(a)
-	snapshotEntity.ReqToken = hex.EncodeToString(md5Hash.Sum(nil))
-	return nil
-}
+//func (snapshotEntity *TaskDtoSubmitSnapshot) GenerateSnapshotToken() error {
+//	a, err := json.Marshal(snapshotEntity.SubmitCommand)
+//	if err != nil {
+//		return err
+//	}
+//	md5Hash := md5.New()
+//	md5Hash.Write(a)
+//	snapshotEntity.ReqToken = hex.EncodeToString(md5Hash.Sum(nil))
+//	return nil
+//}
